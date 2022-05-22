@@ -1,0 +1,50 @@
+.App {
+  background-color: black;
+  font-family: 'Kumbh Sans';
+}
+
+.Sidebar {
+  height: 100vh;
+  width: 300px;
+  padding: 40px 25px 25px;
+  background-color: hsl(0, 0%, 11%);
+  overflow: auto;
+}
+
+.Sidebar menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.NavButton {
+  width: fit-content;
+  padding-block: 12px;
+  padding-inline: 18px 22px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: hsl(0, 0%, 50%);
+  border-radius: 25px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+  transition: .2s;
+}
+
+.NavButton:hover {
+  background-color: hsl(0, 0%, 14%);
+  color: hsl(0, 0%, 80%);
+  transform: translateX(5px);
+}
+
+.NavButton:active {
+  transform: translateX(5px) scale(0.9);
+}
+
+.NavButton.selected {
+  background-color: hsl(0, 0%, 18%);
+  color: white;
+  transform: translateX(10px);
+}
