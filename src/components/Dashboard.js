@@ -66,8 +66,13 @@ const trending = (
     <Item title="@alex" description="No Traffic Maker" icon />
   </section>
 )
+const navButtons = [
+  { icon: <RiBookLine />, title: 'Projects' },
+  { icon: <RiMoreLine />, title: 'More' },
+]
+navButtons.forEach(button => button.key = uniqid());
 
-function Dashboard() {
+function Dashboard({ toggleSidebar }) {
   const [selected, setSelected] = useState('Projects');
 
   if (useMediaQuery({ minWidth: 1190 })) {
@@ -88,20 +93,17 @@ function Dashboard() {
   return (
     <div className="Dashboard">
       <div className="MainContent">
-        <Header />
+        <Header toggleSidebar={toggleSidebar} />
         <nav>
-          <NavButton
-            icon={<RiBookLine />}
-            title={'Projects'}
-            selected={selected === 'Projects'}
-            handleClick={setSelected}
-          />
-          <NavButton
-            icon={<RiMoreLine />}
-            title={'More'}
-            selected={selected === 'More'}
-            handleClick={setSelected}
-          />
+          {navButtons.map(({ icon, title, key }) => (
+            <NavButton
+              key={key}
+              icon={icon}
+              title={title}
+              selected={selected === title}
+              handleClick={() => setSelected(title)}
+            />
+          ))}
         </nav>
         {selected === 'Projects' && projects}
         {selected === 'More' && (

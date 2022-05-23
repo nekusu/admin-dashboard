@@ -11,15 +11,18 @@ import {
 } from 'react-icons/ri';
 import '../styles/Header.css';
 
-function Header() {
+function Header({ toggleSidebar }) {
   return (
     <header className="Header">
       <div>
-        {useMediaQuery({ maxWidth: 910 }) && (<Button
-          icon={<RiMenu2Fill />}
-          title="Menu"
-          alt
-        />)}
+        {useMediaQuery({ maxWidth: 910 }) && (
+          <Button
+            icon={<RiMenu2Fill />}
+            title="Menu"
+            handleClick={() => toggleSidebar(true)}
+            alt
+          />
+        )}
         <SearchBar />
         <Button
           icon={<RiNotificationLine />}

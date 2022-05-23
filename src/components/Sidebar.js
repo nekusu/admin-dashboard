@@ -24,26 +24,31 @@ const buttons = [
 ];
 buttons.forEach(button => button.key = uniqid());
 
-function Sidebar({ defaultButton = 'Home' }) {
+function Sidebar({ isOpen, toggleSidebar, defaultButton = 'Home' }) {
   const [selected, setSelected] = useState(defaultButton);
-
-  if (useMediaQuery({ minWidth: 911 })) {
-    return (
-      <div className="Sidebar">
-        <menu>
-          {buttons.map(({ icon, title, key }) => (
-            <NavButton
-              key={key}
-              icon={icon}
-              title={title}
-              selected={selected === title}
-              handleClick={setSelected}
-            />
-          ))}
-        </menu>
-      </div>
-    );
+  const isScreenBigEnough = useMediaQuery({ minWidth: 911 })
+  if (isOpen && isScreenBigEnough) {
+    toggleSidebar(false);
   }
+
+  return (
+    <div className={`Sidebar ${isScreenBigEnough || isOpen ? 'open' : ''}`}>
+      <menu>
+        {buttons.map(({ icon, title, key }) => (
+          <NavButton
+            key={key}
+            icon={icon}
+            title={title}
+            selected={selected === title}
+            handleClick={() => {
+              toggleSidebar(false);
+              setSelected(title);
+            }}
+          />
+        ))}
+      </menu>
+    </div>
+  );
 }
 
 export default Sidebar;

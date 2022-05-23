@@ -3,7 +3,9 @@
   min-width: clamp(245px, 20vw, 290px);
   padding: 40px 20px 25px;
   background-color: var(--bg-color);
-  overflow: auto;
+  overflow-x: visible;
+  overflow-y: auto;
+  transition: transform .3s, opacity .3s;
 }
 
 .Sidebar menu {
@@ -22,4 +24,35 @@
 
 .Sidebar .NavButton.selected {
   transform: translateX(10px);
+}
+
+.SidebarBG {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  opacity: 0;
+}
+
+.SidebarBG.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 910px) {
+  .Sidebar {
+    position: fixed;
+    z-index: 1;
+  }
+
+  .Sidebar:not(.open) {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  .SidebarBG {
+    opacity: 0.6;
+    transition: opacity .3s;
+  }
 }

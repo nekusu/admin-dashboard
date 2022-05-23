@@ -9,7 +9,7 @@ function NavButton(props) {
   return (
     <li
       className={`NavButton ${title} ${selected ? 'selected' : ''}`}
-      onClick={() => handleClick(title)}
+      onClick={handleClick}
     >
       {icon}
       {title}
