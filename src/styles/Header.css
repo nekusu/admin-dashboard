@@ -1,7 +1,6 @@
 .Header {
   width: 100%;
   max-width: 900px;
-  margin-inline: 25px;
   padding: 25px;
   display: flex;
   flex-direction: column;
@@ -92,9 +91,21 @@
   font-size: 13px;
 }
 
-@media (max-width: 855px) {
+@media (max-width: 910px) {
+  .Header {
+    max-width: 100%;
+    padding-inline: 20px;
+    border-radius: 0;
+  }
+}
+
+@media (max-width: 560px) {
   .Greetings {
     display: none;
+  }
+
+  .Header>div {
+    gap: 8px;
   }
 
   .Header>div:last-child {

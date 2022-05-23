@@ -1,7 +1,9 @@
+import { useMediaQuery } from 'react-responsive';
 import SearchBar from "./SearchBar";
 import Button from "./Button";
 import RandomAvatar from "./RandomAvatar";
 import {
+  RiMenu2Fill,
   RiNotificationLine,
   RiAddLine,
   RiUploadLine,
@@ -13,6 +15,11 @@ function Header() {
   return (
     <header className="Header">
       <div>
+        {useMediaQuery({ maxWidth: 910 }) && (<Button
+          icon={<RiMenu2Fill />}
+          title="Menu"
+          alt
+        />)}
         <SearchBar />
         <Button
           icon={<RiNotificationLine />}

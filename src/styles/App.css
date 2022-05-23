@@ -5,18 +5,22 @@
   font-family: 'Kumbh Sans';
 }
 
-.Button {
+.Button,
+.NavButton {
   display: flex;
   align-items: center;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+  transition: .2s;
+}
+
+.Button {
   gap: 8px;
   background-color: transparent;
   border-radius: 5px;
   font-size: 16px;
-  font-weight: 500;
   font-family: 'Kumbh Sans';
-  cursor: pointer;
-  user-select: none;
-  transition: .2s;
 }
 
 .Button svg {
@@ -43,6 +47,30 @@
 .Button.alt:active,
 .Button:active {
   transform: scale(0.9);
+}
+
+.NavButton {
+  width: fit-content;
+  padding-block: 12px;
+  padding-inline: 18px 22px;
+  gap: 12px;
+  color: var(--text-color);
+  border-radius: 25px;
+  font-size: 18px;
+}
+
+.NavButton:hover {
+  background-color: hsl(0, 0%, 18%);
+  color: white;
+}
+
+.NavButton:active {
+  transform: scale(0.9);
+}
+
+.NavButton.selected {
+  background-color: var(--accent-color);
+  color: hsl(0, 0%, 15%);
 }
 
 .Avatar {

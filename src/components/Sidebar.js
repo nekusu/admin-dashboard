@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import uniqid from 'uniqid'
 import NavButton from './NavButton';
 import {
@@ -26,20 +27,23 @@ buttons.forEach(button => button.key = uniqid());
 function Sidebar({ defaultButton = 'Home' }) {
   const [selected, setSelected] = useState(defaultButton);
 
-  return (
-    <div className="Sidebar">
-      <menu>
-        {buttons.map(({ icon, title, key }) => (
-          <NavButton
-            key={key}
-            icon={icon}
-            title={title}
-            selected={selected === title}
-            handleClick={setSelected} />
-        ))}
-      </menu>
-    </div>
-  );
+  if (useMediaQuery({ minWidth: 911 })) {
+    return (
+      <div className="Sidebar">
+        <menu>
+          {buttons.map(({ icon, title, key }) => (
+            <NavButton
+              key={key}
+              icon={icon}
+              title={title}
+              selected={selected === title}
+              handleClick={setSelected}
+            />
+          ))}
+        </menu>
+      </div>
+    );
+  }
 }
 
 export default Sidebar;

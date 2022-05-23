@@ -1,13 +1,17 @@
+import { useState } from 'react';
 import { loremIpsum } from 'lorem-ipsum';
 import { useMediaQuery } from 'react-responsive';
 import uniqid from 'uniqid';
 import Header from "./Header";
 import Item from "./Item";
 import Button from "./Button";
+import NavButton from './NavButton';
 import {
   RiStarLine,
   RiEyeLine,
   RiShareLine,
+  RiBookLine,
+  RiMoreLine,
 } from 'react-icons/ri';
 import '../styles/Dashboard.css';
 
@@ -64,6 +68,8 @@ const trending = (
 )
 
 function Dashboard() {
+  const [selected, setSelected] = useState('Projects');
+
   if (useMediaQuery({ minWidth: 1190 })) {
     return (
       <div className="Dashboard">
@@ -83,8 +89,27 @@ function Dashboard() {
     <div className="Dashboard">
       <div className="MainContent">
         <Header />
-        <h2>Projects</h2>
-        {projects}
+        <nav>
+          <NavButton
+            icon={<RiBookLine />}
+            title={'Projects'}
+            selected={selected === 'Projects'}
+            handleClick={setSelected}
+          />
+          <NavButton
+            icon={<RiMoreLine />}
+            title={'More'}
+            selected={selected === 'More'}
+            handleClick={setSelected}
+          />
+        </nav>
+        {selected === 'Projects' && projects}
+        {selected === 'More' && (
+          <div className="More">
+            {announcements}
+            {trending}
+          </div>
+        )}
       </div>
     </div>
   )

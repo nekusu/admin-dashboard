@@ -12,34 +12,14 @@
   gap: 8px;
 }
 
-.NavButton {
-  width: fit-content;
-  padding-block: 12px;
-  padding-inline: 18px 22px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: var(--text-color);
-  border-radius: 25px;
-  font-size: 18px;
-  font-weight: 500;
-  cursor: pointer;
-  user-select: none;
-  transition: .2s;
-}
-
-.NavButton:hover {
-  background-color: hsl(0, 0%, 18%);
-  color: white;
+.Sidebar .NavButton:hover {
   transform: translateX(5px);
 }
 
-.NavButton:active {
+.Sidebar .NavButton:active {
   transform: translateX(5px) scale(0.9);
 }
 
-.NavButton.selected {
-  background-color: var(--accent-color);
-  color: hsl(0, 0%, 15%);
+.Sidebar .NavButton.selected {
   transform: translateX(10px);
 }
