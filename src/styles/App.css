@@ -3,6 +3,7 @@
   background-color: black;
   color: var(--text-color);
   font-family: 'Kumbh Sans';
+  overflow: hidden;
 }
 
 .Button,

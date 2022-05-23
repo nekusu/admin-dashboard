@@ -6,7 +6,7 @@
 
 .MainContent {
   margin-top: 20px;
-  padding-inline: 25px;
+  margin-inline: 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,7 +41,8 @@ aside {
   display: flex;
   flex-direction: column;
   gap: 25px;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 section {
@@ -128,12 +129,14 @@ section.Projects {
   height: calc(100vh - 232px);
   width: 100%;
   max-width: 900px;
+  margin-inline: -25px;
   padding-bottom: 20px;
   display: grid;
   gap: 12px;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-auto-rows: min-content;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 section.Projects .Item {
@@ -167,7 +170,6 @@ div.More {
 
 div.More section {
   width: 100%;
-  min-width: 250px;
 }
 
 @media (max-width: 1189px) {
