@@ -1,4 +1,5 @@
 import Sidebar from './components/Sidebar';
+import Header from './components/Header';
 import './styles/App.css';
 
 function App() {
@@ -6,7 +7,7 @@ function App() {
     <div className="App">
       <Sidebar />
       <div className="Dashboard">
-
+        <Header />
       </div>
     </div>
   );
