@@ -9,6 +9,7 @@ import {
   RiGroupLine,
   RiSettingsLine,
 } from 'react-icons/ri';
+import '../styles/Sidebar.css';
 
 function Sidebar({ defaultButton = 'Home' }) {
   const buttons = [

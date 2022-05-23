@@ -1,50 +1,59 @@
 .App {
+  display: flex;
   background-color: black;
   font-family: 'Kumbh Sans';
 }
 
-.Sidebar {
-  height: 100vh;
-  width: 300px;
-  padding: 40px 25px 25px;
-  background-color: hsl(0, 0%, 11%);
-  overflow: auto;
-}
-
-.Sidebar menu {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.NavButton {
-  width: fit-content;
-  padding-block: 12px;
-  padding-inline: 18px 22px;
+.Button {
   display: flex;
   align-items: center;
-  gap: 12px;
-  color: hsl(0, 0%, 50%);
-  border-radius: 25px;
-  font-size: 18px;
+  gap: 8px;
+  background-color: transparent;
+  border-radius: 5px;
+  font-size: 16px;
   font-weight: 500;
+  font-family: 'Kumbh Sans';
   cursor: pointer;
   user-select: none;
   transition: .2s;
 }
 
-.NavButton:hover {
+.Button svg {
+  font-size: 18px;
+}
+
+.Button.alt {
+  min-width: 36px;
+  justify-content: center;
+  color: var(--text-color);
+  border-radius: 25px;
+}
+
+.Button.alt:hover {
   background-color: hsl(0, 0%, 14%);
-  color: hsl(0, 0%, 80%);
-  transform: translateX(5px);
+  color: var(--accent-color);
 }
 
-.NavButton:active {
-  transform: translateX(5px) scale(0.9);
+.Button:not(.alt) {
+  background-color: var(--accent-color);
+  color: var(--dark-text-color);
 }
 
-.NavButton.selected {
-  background-color: hsl(0, 0%, 18%);
-  color: white;
-  transform: translateX(10px);
+.Button.alt:active,
+.Button:active {
+  transform: scale(0.9);
+}
+
+.Dashboard {
+  width: 100%;
+  padding: 20px 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Avatar {
+  background-color: black;
+  border-radius: 50%;
+  cursor: pointer;
 }
