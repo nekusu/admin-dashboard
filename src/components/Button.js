@@ -4,6 +4,7 @@ function Button(props) {
     label,
     title,
     alt,
+    handleClick,
     className = '',
     type = 'button',
   } = props;
@@ -13,6 +14,7 @@ function Button(props) {
       className={`Button ${className} ${alt ? 'alt' : ''}`}
       type={type}
       title={title}
+      onClick={handleClick}
     >
       {icon}
       {label}
