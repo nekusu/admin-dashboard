@@ -1,9 +1,41 @@
 import { loremIpsum } from 'lorem-ipsum';
 import { useMediaQuery } from 'react-responsive';
+import uniqid from 'uniqid';
 import Header from "./Header";
 import Item from "./Item";
+import Button from "./Button";
+import {
+  RiStarLine,
+  RiEyeLine,
+  RiShareLine,
+} from 'react-icons/ri';
 import '../styles/Dashboard.css';
 
+const projectNames = [
+  'Super Cool Project',
+  'Less Cool Project',
+  'Impossible App',
+  'Easy Peasy App',
+  'Ad Blocker',
+  'Money Maker',
+]
+const buttons = [
+  <Button key={uniqid()} icon={<RiStarLine />} title="Star" alt />,
+  <Button key={uniqid()} icon={<RiEyeLine />} title="View" alt />,
+  <Button key={uniqid()} icon={<RiShareLine />} title="Share" alt />,
+];
+const projects = (
+  <section className="Projects">
+    {projectNames.map(name => (
+      <Item
+        key={uniqid()}
+        title={name}
+        description={loremIpsum({ count: 2, units: 'sentences' })}
+        buttons={buttons}
+      />
+    ))}
+  </section>
+)
 const announcements = (
   <section className="Announcements">
     <h2>Announcements</h2>
@@ -32,11 +64,13 @@ const trending = (
 )
 
 function Dashboard() {
-  if (useMediaQuery({ minWidth: 1160 })) {
+  if (useMediaQuery({ minWidth: 1190 })) {
     return (
       <div className="Dashboard">
         <div className="MainContent">
           <Header />
+          <h2>Projects</h2>
+          {projects}
         </div>
         <aside>
           {announcements}
@@ -49,6 +83,8 @@ function Dashboard() {
     <div className="Dashboard">
       <div className="MainContent">
         <Header />
+        <h2>Projects</h2>
+        {projects}
       </div>
     </div>
   )

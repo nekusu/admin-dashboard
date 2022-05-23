@@ -5,15 +5,22 @@ function Item(props) {
     title,
     description,
     icon,
+    buttons,
   } = props;
 
   return (
     <div className="Item">
-      {icon && <RandomAvatar />}
-      <div className="Info">
-        <h3>{title}</h3>
-        <p>{description}</p>
+      <div className="ItemHeader">
+        {icon && <RandomAvatar />}
+        <div className="ItemInfo">
+          <h3>{title}</h3>
+          <p>{description}</p>
+        </div>
       </div>
+      {buttons &&
+        (<div className="ItemButtons">
+          {buttons}
+        </div>)}
     </div>
   );
 }
