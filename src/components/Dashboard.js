@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { loremIpsum } from 'lorem-ipsum';
 import { useMediaQuery } from 'react-responsive';
 import uniqid from 'uniqid';
+import capitalize from 'capitalize';
 import Header from "./Header";
 import Item from "./Item";
 import Button from "./Button";
@@ -15,14 +16,18 @@ import {
 } from 'react-icons/ri';
 import '../styles/Dashboard.css';
 
-const projectNames = [
-  'Super Cool Project',
-  'Less Cool Project',
-  'Impossible App',
-  'Easy Peasy App',
-  'Ad Blocker',
-  'Money Maker',
-]
+function randomNumber({ min = 1, max = 1 }) {
+  return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
+function randomCapitalizedWords({ min = 1, max = 1 }) {
+  return capitalize.words(
+    loremIpsum({
+      count: randomNumber({ min, max }),
+      units: 'words',
+    }));
+}
+
 const buttons = [
   <Button key={uniqid()} icon={<RiStarLine />} title="Star" alt />,
   <Button key={uniqid()} icon={<RiEyeLine />} title="View" alt />,
@@ -30,11 +35,11 @@ const buttons = [
 ];
 const projects = (
   <section className="Projects">
-    {projectNames.map(name => (
+    {Array(randomNumber({ max: 10 })).fill(null).map(() => (
       <Item
         key={uniqid()}
-        title={name}
-        description={loremIpsum({ count: 2, units: 'sentences' })}
+        title={randomCapitalizedWords({ max: 4 })}
+        description={loremIpsum({ count: 2 })}
         buttons={buttons}
       />
     ))}
@@ -43,27 +48,25 @@ const projects = (
 const announcements = (
   <section className="Announcements">
     <h2>Announcements</h2>
-    <Item
-      title="Site Maintenance"
-      description={loremIpsum({ count: 2, units: 'sentences' })}
-    />
-    <Item
-      title="Community Share Day"
-      description={loremIpsum({ count: 2, units: 'sentences' })}
-    />
-    <Item
-      title="Updated Privacy Policy"
-      description={loremIpsum({ count: 1, units: 'sentences' })}
-    />
+    {Array(randomNumber({ max: 4 })).fill(null).map(() => (
+      <Item
+        key={uniqid()}
+        title={randomCapitalizedWords({ max: 4 })}
+        description={loremIpsum({ count: randomNumber({ max: 2 }) })}
+      />
+    ))}
   </section>
 )
 const trending = (
   <section className="Trending">
     <h2>Trending</h2>
-    <Item title="@tegan" description="World Peace Builder" icon />
-    <Item title="@nekusu" description="Super Cool Project" icon />
-    <Item title="@kendall" description="Life Changing App" icon />
-    <Item title="@alex" description="No Traffic Maker" icon />
+    {Array(randomNumber({ min: 3, max: 6 })).fill(null).map(() => (
+      <Item
+        key={uniqid()}
+        title={`@${loremIpsum({ count: 1, units: 'words' })}`}
+        description={randomCapitalizedWords({ max: 4 })}
+        icon />
+    ))}
   </section>
 )
 const navButtons = [
