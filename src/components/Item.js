@@ -11,7 +11,7 @@ function Item(props) {
   return (
     <div className="Item">
       <div className="ItemHeader">
-        {icon && <RandomAvatar />}
+        {icon && <RandomAvatar scale={8} />}
         <div className="ItemInfo">
           <h3>{title}</h3>
           <p>{description}</p>

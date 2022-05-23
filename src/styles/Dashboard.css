@@ -83,7 +83,12 @@ section h2 {
 .ItemHeader {
   width: 100%;
   display: flex;
+  align-items: center;
   gap: 16px;
+}
+
+.Item img {
+  height: 45px;
 }
 
 .Item h3 {
