@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import uniqid from 'uniqid'
 import NavButton from './NavButton';
+import GithubButton from './GithubButton';
 import {
   RiHomeLine,
   RiUserLine,
@@ -47,6 +48,7 @@ function Sidebar({ isOpen, toggleSidebar, defaultButton = 'Home' }) {
           />
         ))}
       </menu>
+      <GithubButton username={'nekusu'} />
     </div>
   );
 }
