@@ -1,6 +1,7 @@
 .Header {
   width: 100%;
   max-width: 900px;
+  margin-inline: 25px;
   padding: 25px;
   display: flex;
   flex-direction: column;
