@@ -1,4 +1,5 @@
 import { useMediaQuery } from 'react-responsive';
+import uniqid from 'uniqid';
 import SearchBar from "./SearchBar";
 import Button from "./Button";
 import RandomAvatar from "./RandomAvatar";
@@ -10,6 +11,8 @@ import {
   RiShareCircleLine,
 } from 'react-icons/ri';
 import '../styles/Header.css';
+
+const avatar = <RandomAvatar key={uniqid()} />;
 
 function Header({ toggleSidebar }) {
   return (
@@ -29,7 +32,7 @@ function Header({ toggleSidebar }) {
           title="Notifications"
           alt
         />
-        <RandomAvatar />
+        {avatar}
       </div>
       <div>
         <div className="HeaderButtons">
