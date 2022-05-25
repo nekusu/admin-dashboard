@@ -46,6 +46,15 @@ navButtons.forEach(button => button.key = uniqid());
 
 function Dashboard({ toggleSidebar }) {
   const [selected, setSelected] = useState('Projects');
+  const [projects, setProjects] = useState(Array(randomNumber({ max: 10 })).fill().map(() => {
+    return {
+      id: uniqid(),
+      title: randomWords({ max: 4 }),
+      description: loremIpsum({ count: 2 }),
+      isFavorite: false,
+    }
+  }));
+  const projectsSection = <Projects projects={projects} setProjects={setProjects} />;
   const isScreenBigEnough = useMediaQuery({ minWidth: 1190 });
 
   return (
@@ -55,7 +64,7 @@ function Dashboard({ toggleSidebar }) {
         {isScreenBigEnough ? (
           <>
             <h2>Projects</h2>
-            <Projects />
+            {projectsSection}
           </>
         ) : (
           <>
@@ -70,7 +79,7 @@ function Dashboard({ toggleSidebar }) {
                 />
               ))}
             </nav>
-            {selected === 'Projects' && <Projects />}
+            {selected === 'Projects' && projectsSection}
             {selected === 'More' && (
               <div className="More">
                 {announcementsSection}

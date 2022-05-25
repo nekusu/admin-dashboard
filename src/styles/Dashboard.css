@@ -147,6 +147,10 @@ section.Projects .Item {
   padding-bottom: 15px;
 }
 
+section.Projects .Item .Button.favorite {
+  color: var(--accent-color);
+}
+
 .MainContent .Item h3 {
   font-size: 18px;
 }

@@ -1,48 +1,59 @@
-import { loremIpsum } from 'lorem-ipsum';
-import uniqid from 'uniqid';
 import Item from '../../Item';
 import Button from '../../Button';
-import randomWords from '../../../utils/randomWords';
 import {
+  RiStarFill,
   RiStarLine,
   RiDeleteBin6Line,
-  RiShareLine,
+  RiEditCircleLine,
 } from 'react-icons/ri';
-
-const buttons = [
-  { icon: <RiStarLine />, title: 'Star' },
-  { icon: <RiDeleteBin6Line />, title: 'Delete' },
-  { icon: <RiShareLine />, title: 'Share' },
-];
-buttons.forEach(button => button.key = uniqid());
-const projects = {};
 
 function Project(props) {
   const {
     id,
-    title = randomWords({ max: 4 }),
-    description = loremIpsum({ count: 2 }),
+    title,
+    description,
+    isFavorite,
+    setProjects,
   } = props;
-
-  if (!projects[id]) {
-    projects[id] = {
-      title: title,
-      description: description,
-    };
-  }
+  const onFavorite = () => {
+    setProjects(projects => projects.map(project => {
+      if (project.id === id) {
+        return { ...project, isFavorite: !project.isFavorite }
+      }
+      return project;
+    }));
+  };
+  const onDelete = () => {
+    setProjects(projects => projects.filter(project => project.id !== id));
+  };
 
   return (
     <Item
-      title={projects[id].title}
-      description={projects[id].description}
-      buttons={buttons.map(({ icon, title, key }) => (
+      title={title}
+      description={description}
+      buttons={[
         <Button
-          key={key}
-          icon={icon}
-          title={title}
+          key={`${id}-favorite`}
+          className={isFavorite ? 'favorite' : ''}
+          icon={isFavorite ? <RiStarFill /> : <RiStarLine />}
+          title={isFavorite ? 'Unstar' : 'Star'}
+          handleClick={onFavorite}
           alt
-        />
-      ))}
+        />,
+        <Button
+          key={`${id}-edit`}
+          icon={<RiEditCircleLine />}
+          title="Edit"
+          alt
+        />,
+        <Button
+          key={`${id}-delete`}
+          icon={<RiDeleteBin6Line />}
+          title="Delete"
+          handleClick={onDelete}
+          alt
+        />,
+      ]}
     />
   );
 }
