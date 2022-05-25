@@ -14,7 +14,7 @@ import '../../styles/Header.css';
 
 const avatar = <RandomAvatar key={uniqid()} />;
 
-function Header({ toggleSidebar }) {
+function Header({ toggleSidebar, createProject }) {
   return (
     <header className="Header">
       <div>
@@ -36,7 +36,11 @@ function Header({ toggleSidebar }) {
       </div>
       <div>
         <div className="HeaderButtons">
-          <Button icon={<RiAddLine />} label="New" />
+          <Button
+            icon={<RiAddLine />}
+            label="New"
+            handleClick={createProject}
+          />
           <Button icon={<RiUploadLine />} label="Upload" />
           <Button icon={<RiShareCircleLine />} label="Share" />
         </div>

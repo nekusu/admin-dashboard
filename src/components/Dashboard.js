@@ -14,6 +14,15 @@ import {
 } from 'react-icons/ri';
 import '../styles/Dashboard.css';
 
+function newProject() {
+  return {
+    id: uniqid(),
+    title: randomWords({ max: 4 }),
+    description: loremIpsum({ count: 2 }),
+    isFavorite: false,
+  }
+}
+
 const announcementsSection = (
   <section className="Announcements">
     <h2>Announcements</h2>
@@ -46,21 +55,18 @@ navButtons.forEach(button => button.key = uniqid());
 
 function Dashboard({ toggleSidebar }) {
   const [selected, setSelected] = useState('Projects');
-  const [projects, setProjects] = useState(Array(randomNumber({ max: 10 })).fill().map(() => {
-    return {
-      id: uniqid(),
-      title: randomWords({ max: 4 }),
-      description: loremIpsum({ count: 2 }),
-      isFavorite: false,
-    }
-  }));
+  const [projects, setProjects] = useState(Array(randomNumber({ max: 10 })).fill().map(newProject));
   const projectsSection = <Projects projects={projects} setProjects={setProjects} />;
   const isScreenBigEnough = useMediaQuery({ minWidth: 1190 });
+  const createProject = () => setProjects([...projects, newProject()]);
 
   return (
     <div className="Dashboard">
       <div className="MainContent">
-        <Header toggleSidebar={toggleSidebar} />
+        <Header
+          toggleSidebar={toggleSidebar}
+          createProject={createProject}
+        />
         {isScreenBigEnough ? (
           <>
             <h2>Projects</h2>
