@@ -20,7 +20,7 @@ function newProject() {
     title: randomWords({ max: 4 }),
     description: loremIpsum({ count: 2 }),
     isFavorite: false,
-  }
+  };
 }
 
 const announcementsSection = (
@@ -34,7 +34,7 @@ const announcementsSection = (
       />
     ))}
   </section>
-)
+);
 const trendingSection = (
   <section className="Trending">
     <h2>Trending</h2>
@@ -46,11 +46,11 @@ const trendingSection = (
         icon />
     ))}
   </section>
-)
+);
 const navButtons = [
   { icon: <RiBookLine />, title: 'Projects' },
   { icon: <RiMoreLine />, title: 'More' },
-]
+];
 navButtons.forEach(button => button.key = uniqid());
 
 function Dashboard({ toggleSidebar }) {

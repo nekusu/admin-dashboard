@@ -12,9 +12,9 @@ function RandomAvatar(props) {
   const generate = randpix({
     colorScheme: RandpixColorScheme[colorScheme],
     scale,
-  })
-  const art = generate()
-  const dataURL = art.toDataURL()
+  });
+  const art = generate();
+  const dataURL = art.toDataURL();
 
   return (
     <img
@@ -23,7 +23,7 @@ function RandomAvatar(props) {
       alt={name}
       title={name}
     />
-  )
+  );
 }
 
 export default RandomAvatar;

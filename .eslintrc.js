@@ -19,7 +19,8 @@ module.exports = {
         "react",
     ],
     "rules": {
+        "semi": [2, "always"],
         'react/prop-types': [0],
         "react/react-in-jsx-scope": "off",
     },
-}
+};

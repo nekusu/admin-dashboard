@@ -24,7 +24,7 @@ function Project(props) {
   const onFavorite = () => {
     setProjects(projects => projects.map(project => {
       if (project.id === id) {
-        return { ...project, isFavorite: !project.isFavorite }
+        return { ...project, isFavorite: !project.isFavorite };
       }
       return project;
     }));
