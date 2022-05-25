@@ -1,4 +1,4 @@
-import Button from './Button';
+import Button from '../../Button';
 import { RiSearchLine } from 'react-icons/ri';
 
 function SearchBar() {

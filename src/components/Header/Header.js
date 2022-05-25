@@ -1,8 +1,8 @@
 import { useMediaQuery } from 'react-responsive';
 import uniqid from 'uniqid';
-import SearchBar from "./SearchBar";
-import Button from "./Button";
-import RandomAvatar from "./RandomAvatar";
+import SearchBar from "./components/SearchBar";
+import Button from "../Button";
+import RandomAvatar from "../RandomAvatar";
 import {
   RiMenu2Fill,
   RiNotificationLine,
@@ -10,7 +10,7 @@ import {
   RiUploadLine,
   RiShareCircleLine,
 } from 'react-icons/ri';
-import '../styles/Header.css';
+import '../../styles/Header.css';
 
 const avatar = <RandomAvatar key={uniqid()} />;
 
@@ -36,13 +36,13 @@ function Header({ toggleSidebar }) {
       </div>
       <div>
         <div className="HeaderButtons">
-          <Button icon={<RiAddLine />} label="Add" />
+          <Button icon={<RiAddLine />} label="New" />
           <Button icon={<RiUploadLine />} label="Upload" />
           <Button icon={<RiShareCircleLine />} label="Share" />
         </div>
         <div className="Greetings">
           <p>Hi there,</p>
-          <p>Morgan Oakley (@morgan)</p>
+          <p>@nekusu</p>
         </div>
       </div>
     </header>
