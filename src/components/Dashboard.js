@@ -4,40 +4,20 @@ import { useMediaQuery } from 'react-responsive';
 import uniqid from 'uniqid';
 import Header from "./Header";
 import Item from "./Item";
-import Button from "./Button";
 import NavButton from './NavButton';
+import Projects from "./Projects";
 import randomNumber from '../utils/randomNumber';
 import randomWords from '../utils/randomWords';
 import {
-  RiStarLine,
-  RiEyeLine,
-  RiShareLine,
   RiBookLine,
   RiMoreLine,
 } from 'react-icons/ri';
 import '../styles/Dashboard.css';
 
-const buttons = [
-  <Button key={uniqid()} icon={<RiStarLine />} title="Star" alt />,
-  <Button key={uniqid()} icon={<RiEyeLine />} title="View" alt />,
-  <Button key={uniqid()} icon={<RiShareLine />} title="Share" alt />,
-];
-const projects = (
-  <section className="Projects">
-    {Array(randomNumber({ max: 10 })).fill(null).map(() => (
-      <Item
-        key={uniqid()}
-        title={randomWords({ max: 4 })}
-        description={loremIpsum({ count: 2 })}
-        buttons={buttons}
-      />
-    ))}
-  </section>
-)
-const announcements = (
+const announcementsSection = (
   <section className="Announcements">
     <h2>Announcements</h2>
-    {Array(randomNumber({ max: 4 })).fill(null).map(() => (
+    {Array(randomNumber({ max: 4 })).fill().map(() => (
       <Item
         key={uniqid()}
         title={randomWords({ max: 4 })}
@@ -46,10 +26,10 @@ const announcements = (
     ))}
   </section>
 )
-const trending = (
+const trendingSection = (
   <section className="Trending">
     <h2>Trending</h2>
-    {Array(randomNumber({ min: 3, max: 6 })).fill(null).map(() => (
+    {Array(randomNumber({ min: 3, max: 6 })).fill().map(() => (
       <Item
         key={uniqid()}
         title={`@${randomWords({ capitalized: false })}`}
@@ -75,7 +55,7 @@ function Dashboard({ toggleSidebar }) {
         {isScreenBigEnough ? (
           <>
             <h2>Projects</h2>
-            {projects}
+            <Projects />
           </>
         ) : (
           <>
@@ -90,11 +70,11 @@ function Dashboard({ toggleSidebar }) {
                 />
               ))}
             </nav>
-            {selected === 'Projects' && projects}
+            {selected === 'Projects' && <Projects />}
             {selected === 'More' && (
               <div className="More">
-                {announcements}
-                {trending}
+                {announcementsSection}
+                {trendingSection}
               </div>
             )}
           </>
@@ -102,8 +82,8 @@ function Dashboard({ toggleSidebar }) {
       </div>
       {isScreenBigEnough && (
         <aside>
-          {announcements}
-          {trending}
+          {announcementsSection}
+          {trendingSection}
         </aside>
       )}
     </div>
