@@ -69,7 +69,19 @@ section h2 {
   background-color: var(--bg-color);
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color .2s;
+  transition: background-color .2s, transform .3s, opacity .3s;
+}
+
+.Item.entering,
+.Item.entered {
+  transform: none;
+  opacity: 1;
+}
+
+.Item.unmounted,
+.Item.exiting {
+  transform: scale(0.975) translateY(20px);
+  opacity: 0;
 }
 
 .Item:hover {

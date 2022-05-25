@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useTransition } from 'react-transition-state';
 import { useMediaQuery } from 'react-responsive';
 import uniqid from 'uniqid'
 import NavButton from './NavButton';
@@ -27,13 +28,14 @@ buttons.forEach(button => button.key = uniqid());
 
 function Sidebar({ isOpen, toggleSidebar, defaultButton = 'Home' }) {
   const [selected, setSelected] = useState(defaultButton);
+  const [transitionState, toggle] = useTransition({ timeout: 300 });
   const isScreenBigEnough = useMediaQuery({ minWidth: 911 })
-  if (isOpen && isScreenBigEnough) {
-    toggleSidebar(false);
-  }
+
+  useEffect(() => toggle(isOpen), [isOpen]);
+  if (isScreenBigEnough) toggleSidebar(false);
 
   return (
-    <div className={`Sidebar ${isScreenBigEnough || isOpen ? 'open' : ''}`}>
+    <div className={`Sidebar ${transitionState}`}>
       <menu>
         {buttons.map(({ icon, title, key }) => (
           <NavButton

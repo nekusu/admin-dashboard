@@ -6,10 +6,11 @@ function Item(props) {
     description,
     icon,
     buttons,
+    className = '',
   } = props;
 
   return (
-    <div className="Item">
+    <div className={`Item ${className}`}>
       <div className="ItemHeader">
         {icon && <RandomAvatar scale={8} />}
         <div className="ItemInfo">

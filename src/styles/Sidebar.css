@@ -31,20 +31,6 @@
   transform: translateX(10px);
 }
 
-.SidebarBG {
-  position: fixed;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: black;
-  opacity: 0;
-}
-
-.SidebarBG.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
 .GithubButton {
   width: fit-content;
   padding: 12px 18px;
@@ -55,15 +41,13 @@
   .Sidebar {
     position: fixed;
     z-index: 1;
-  }
-
-  .Sidebar:not(.open) {
     transform: translateX(-100%);
     opacity: 0;
   }
 
-  .SidebarBG {
-    opacity: 0.6;
-    transition: opacity .3s;
+  .Sidebar.entering,
+  .Sidebar.entered {
+    transform: translateX(0);
+    opacity: 1;
   }
 }

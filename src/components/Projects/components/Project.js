@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useTransition } from 'react-transition-state';
 import Item from '../../Item';
 import Button from '../../Button';
 import {
@@ -15,6 +17,10 @@ function Project(props) {
     isFavorite,
     setProjects,
   } = props;
+  const [transitionState, toggle] = useTransition({
+    timeout: 250,
+    mountOnEnter: true,
+  });
   const onFavorite = () => {
     setProjects(projects => projects.map(project => {
       if (project.id === id) {
@@ -23,12 +29,18 @@ function Project(props) {
       return project;
     }));
   };
-  const onDelete = () => {
-    setProjects(projects => projects.filter(project => project.id !== id));
-  };
+  const onDelete = () => toggle(false);
+
+  useEffect(() => toggle(true), [toggle]);
+  useEffect(() => {
+    if (transitionState === 'exited') {
+      setProjects(projects => projects.filter(project => project.id !== id));
+    }
+  }, [transitionState]);
 
   return (
     <Item
+      className={transitionState}
       title={title}
       description={description}
       buttons={[
