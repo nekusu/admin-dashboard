@@ -1,20 +1,18 @@
 # Admin Dashboard
-
 Admin Dashboard for [The Odin Project](https://www.theodinproject.com/).
 
-## Built with
+## Demo
+🌑 [Live Demo](https://nekusu.github.io/admin-dashboard/)
 
-* HTML5
-* CSS
-* JavaScript
+## Built with
 * React
-* ESLint
-* [randpix](https://github.com/LIMPIX31/randpix) (thanks to @LIMPIX31)
+* CSS
+* [randpix](https://github.com/LIMPIX31/randpix)
 
 ## Features
-
 * Complex layout responsive design.
 * Modern and clean UI.
-* Random generation of content and avatars (refresh the page).
+* Random generation of content and avatars.
 
-You can visit the finished website [here](https://nekusu.github.io/admin-dashboard/).
+## Screenshots
+![](/screenshots/screenshot-0.png)
